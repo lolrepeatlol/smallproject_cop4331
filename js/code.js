@@ -130,8 +130,8 @@ function readCookie() {
     const path = window.location.pathname;
     const currentPage = path.substring(path.lastIndexOf('/') + 1)
     if (userId < 0) {
-		if (currentPage !== "index.html" && currentPage !== "" && currentPage !== "register.html") {
-           window.location.href = "index.html";
+        if (currentPage !== "index.html" && currentPage !== "" && currentPage !== "register.html") {
+            window.location.href = "index.html";
         }
     }
     else {
@@ -204,6 +204,7 @@ function addContact() {
                     let message = firstName + " was added to your contacts";
                     document.getElementById("contactAddResult").innerHTML = message;
                     console.log("Contact added successfully");
+					hideAddContactForm();
                     // Refresh the contact list after adding
                     searchContact();
                 }
@@ -222,12 +223,12 @@ function checkRequirements(firstName, lastName, email, phoneNum) {
         console.log("No empty Fields");
         return false;
     }
-    if (!(email.includes('@') && email.includes('.'))) { // Changed .com to . for broader email validity
+    if (!(email.includes('@') && email.includes('.'))) {
         document.getElementById("contactAddResult").innerHTML = "Ensure email is a valid email (e.g., example@domain.com)";
         console.log("Missing @ or . in email");
         return false;
     }
-    const validArr = new Set(["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "-", "(", ")", " "]); // Added more valid characters for phone numbers
+    const validArr = new Set(["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+",]);
     for (let i = 0; i < phoneNum.length; i++) {
         const curr = phoneNum[i];
         if (i !== 0 && curr === "+") {
@@ -236,7 +237,7 @@ function checkRequirements(firstName, lastName, email, phoneNum) {
             return false;
         }
         if (!validArr.has(curr)) {
-            document.getElementById("contactAddResult").innerHTML = "Invalid phone number format. Only numbers, +, -, (), and spaces are allowed.";
+            document.getElementById("contactAddResult").innerHTML = "Invalid phone number format. Only numbers and + allowed";
             console.log("Invalid phone number character: " + curr);
             return false;
         }
@@ -250,6 +251,7 @@ function searchContact() {
 
     let tmp = { search: srch, userId: userId };
     let jsonPayload = JSON.stringify(tmp);
+
 
     let url = urlBase + '/SearchContacts.' + extension;
 
@@ -303,26 +305,136 @@ function searchContact() {
         document.getElementById("contactSearchResult").innerHTML = err.message;
     }
 }
-		document.addEventListener('DOMContentLoaded', function () {
-		readCookie();
-		if(userId > 0){
-		searchContact(); // Call searchContact on page load to display all contacts
-		// Add event listener for real-time search
-		document.getElementById("searchText").addEventListener("keyup", searchContact);
-		}
-	}, false);
+document.addEventListener('DOMContentLoaded', function () {
+    readCookie();
+    if(userId > 0){
+        searchContact(); // Call searchContact on page load to display all contacts
+        // Add event listener for real-time search
+        document.getElementById("searchText").addEventListener("keyup", searchContact);
+    }
+}, false);
+
 
 function editContact(contact) {
-   // ToDO
-   alert("Todo")
+    // Show the modal for editing
+    var modal = document.getElementById("editContactModal");
+    modal.style.display = "block";
+
+    // Populate the form fields with current contact data
+    document.getElementById("editContactId").value = contact.ID;
+    document.getElementById("editFirstNameText").value = contact.FirstName;
+    document.getElementById("editLastNameText").value = contact.LastName;
+    document.getElementById("editEmailText").value = contact.Email;
+    document.getElementById("editPhoneText").value = contact.Phone;
+
+    document.getElementById("contactEditResult").innerHTML = "";
 }
+
+function hideEditContactForm() {
+    var modal = document.getElementById("editContactModal");
+    modal.style.display = "none";
+    document.getElementById("editContactId").value = "";
+    document.getElementById("editFirstNameText").value = "";
+    document.getElementById("editLastNameText").value = "";
+    document.getElementById("editEmailText").value = "";
+    document.getElementById("editPhoneText").value = "";
+    document.getElementById("contactEditResult").innerHTML = "";
+}
+
+window.onclick = function (event) {
+    var addModal = document.getElementById("addContactModal");
+    var editModal = document.getElementById("editContactModal");
+    if (event.target == addModal) {
+        hideAddContactForm();
+    } else if (event.target == editModal) {
+        hideEditContactForm();
+    }
+}
+
+function updateContact() {
+    let contactId = document.getElementById("editContactId").value;
+    let firstName = document.getElementById("editFirstNameText").value;
+    let lastName = document.getElementById("editLastNameText").value;
+    let email = document.getElementById("editEmailText").value;
+    let phoneNum = document.getElementById("editPhoneText").value;
+    document.getElementById("contactEditResult").innerHTML = "";
+
+    if (!(checkRequirementsForEdit(firstName, lastName, email, phoneNum))) {
+        return;
+    }
+
+    let tmp = {
+        contactId: contactId,
+        firstName: firstName,
+        lastName: lastName,
+        phone: phoneNum,
+        email: email,
+        userId: userId
+    };
+    let jsonPayload = JSON.stringify(tmp);
+
+    let url = urlBase + '/EditContact.' + extension;
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+    try {
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let jsonObject = JSON.parse(xhr.responseText);
+                if (jsonObject.error) {
+                    document.getElementById("contactEditResult").innerHTML = jsonObject.error;
+                } else {
+                    document.getElementById("contactEditResult").innerHTML = "Contact updated successfully.";
+                    console.log("Contact updated successfully");
+                    hideEditContactForm();
+                    searchContact(); // Refresh the contact list after updating
+                }
+            }
+        };
+        xhr.send(jsonPayload);
+    }
+    catch (err) {
+        document.getElementById("contactEditResult").innerHTML = err.message;
+    }
+}
+function checkRequirementsForEdit(firstName, lastName, email, phoneNum) {
+    if (firstName === "" || lastName === "" || email === "" || phoneNum === "") {
+		document.getElementById("contactEditResult").innerHTML = "All contact fields are required.";
+        console.log("Problem in Edit: No empty Fields");
+        return false;
+    }
+    if (!(email.includes('@') && email.includes('.'))) {
+		document.getElementById("contactEditResult").innerHTML = "Ensure email is a valid email (e.g., example@domain.com)";
+        console.log("Problem in Edit: Missing @ or . in email");
+        return false;
+    }
+    const validArr = new Set(["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+",]);
+    for (let i = 0; i < phoneNum.length; i++) {
+        const curr = phoneNum[i];
+        if (i !== 0 && curr === "+") {
+			document.getElementById("contactEditResult").innerHTML = "For International Numbers please make sure + is at the beginning.";
+            console.log("Problem in edit:International numbers must start with +. There can't be a + anywhere else");
+            return false;
+        }
+        if (!validArr.has(curr)) {
+			document.getElementById("contactEditResult").innerHTML = "Invalid phone number format. Only numbers and + allowed";
+            console.log("Problem in Edit: Invalid phone number character: " + curr);
+            return false;
+        }
+    }
+    return true;
+}
+
 
 function deleteContact(contactId) {
     if (!confirm("Are you sure you want to delete this contact?")) {
         return;
     }
-
-    let tmp = { id: contactId };
+    console.log(contactId);
+    let tmp = { contactId: contactId,
+        userId : userId
+    };
     let jsonPayload = JSON.stringify(tmp);
 
     let url = urlBase + '/DeleteContact.' + extension;
