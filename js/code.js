@@ -130,7 +130,7 @@ function readCookie() {
     const path = window.location.pathname;
     const currentPage = path.substring(path.lastIndexOf('/') + 1)
     if (userId < 0) {
-		if (currentPage !== "index.html" && currentPage !== "") {
+		if (currentPage !== "index.html" && currentPage !== "" && currentPage !== "register.html") {
            window.location.href = "index.html";
         }
     }
