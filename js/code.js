@@ -127,7 +127,8 @@ function readCookie() {
             userId = parseInt(tokens[1].trim());
         }
     }
-
+    const path = window.location.pathname;
+    const currentPage = path.substring(path.lastIndexOf('/') + 1)
     if (userId < 0) {
 		if (currentPage !== "index.html" && currentPage !== "") {
            window.location.href = "index.html";
@@ -304,9 +305,11 @@ function searchContact() {
 }
 		document.addEventListener('DOMContentLoaded', function () {
 		readCookie();
+		if(userId > 0){
 		searchContact(); // Call searchContact on page load to display all contacts
 		// Add event listener for real-time search
 		document.getElementById("searchText").addEventListener("keyup", searchContact);
+		}
 	}, false);
 
 function editContact(contact) {
