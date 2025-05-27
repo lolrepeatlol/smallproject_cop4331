@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -5,14 +6,6 @@
     <script type="text/javascript" src="js/code.js"></script>
     <link href="css/styles.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function () {
-            readCookie();
-            searchContact(); // Call searchContact on page load to display all contacts
-        }, false);
-    </script>
-
 </head>
 
 <body>
@@ -46,6 +39,23 @@
                 <button type="button" id="addContactFormSubmitButton" class="buttons" onclick="addContact();"> Add Contact </button>
                 <button type="button" id="cancelAddContactButton" class="buttons" onclick="hideAddContactForm();"> Cancel </button><br />
                 <span id="contactAddResult"></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="editContactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideEditContactForm();">&times;</span>
+            <div id="editContactFormDiv">
+                <h2>Edit Contact</h2>
+                <input type="hidden" id="editContactId" />
+                <input type="text" id="editFirstNameText" placeholder="First Name" /><br />
+                <input type="text" id="editLastNameText" placeholder="Last Name" /><br />
+                <input type="text" id="editEmailText" placeholder="Email" /><br />
+                <input type="text" id="editPhoneText" placeholder="Phone" /><br />
+                <button type="button" id="updateContactButton" class="buttons" onclick="updateContact();"> Save Changes </button>
+                <button type="button" id="cancelEditContactButton" class="buttons" onclick="hideEditContactForm();"> Cancel </button><br />
+                <span id="contactEditResult"></span>
             </div>
         </div>
     </div>
