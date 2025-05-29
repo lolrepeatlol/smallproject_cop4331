@@ -1,10 +1,8 @@
-body 
-{
+body {
     background-color: #707070;
 }
 
-#title 
-{
+#title {
     font-size: 40px;
     width: 100%;
     margin: 2% 5%;
@@ -13,8 +11,7 @@ body
     color: #FFFFFF;
 }
 
-#loginDiv
-{
+#loginDiv {
     font-size: 30px;
     width: 70%;
     margin-left: 15%;
@@ -22,8 +19,46 @@ body
     background-color: #b2b2b2;
 }
 
-#loggedInDiv
-{
+#loggedInDiv {
+    font-size: 30px;
+    width: 70%;
+    margin-left: 15%;
+    padding: 25px;
+    background-color: #b2b2b2;
+    /* This will be replaced by #topRightControls positioning */
+    display: none; 
+}
+
+#topRightControls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    font-family: 'Ubuntu', sans-serif;
+    color: #FFFFFF;
+    text-align: right;
+    padding: 10px;
+    background-color: #b2b2b2;
+    border-radius: 10px;
+}
+
+#topRightControls #userName {
+    display: block;
+    margin-bottom: 5px;
+    width: auto; /* Override previous width */
+    margin-left: 0;
+    text-align: right;
+}
+
+#topRightControls #logoutButton {
+    width: auto;
+    margin-left: 0;
+    padding: 5px 15px;
+    font-size: 20px;
+    display: inline-block; /* Adjust for better button display */
+}
+
+#accessUIDiv {
     font-size: 30px;
     width: 70%;
     margin-left: 15%;
@@ -31,8 +66,7 @@ body
     background-color: #b2b2b2;
 }
 
-#accessUIDiv
-{
+#registerDiv {
     font-size: 30px;
     width: 70%;
     margin-left: 15%;
@@ -40,8 +74,7 @@ body
     background-color: #b2b2b2;
 }
 
-.buttons
-{
+.buttons {
     font-size: 30px;
     border-radius: 25px;
     width: 50%;
@@ -49,30 +82,46 @@ body
     font-family: 'Ubuntu', sans-serif;
 }
 
-.buttons:hover{
+.buttons:hover {
     background-color: #00d5124f;
     color: #FFFFFF;
     opacity: 50%;
 }
 
-#loginName
-{
-	font-size: 30px;
-}
-#loginPassword
-{
-	font-size: 30px;
-}
-#searchText
-{
-	font-size: 30px;
-}
-#colorText
-{
-	font-size: 30px;
+#loginName {
+    font-size: 30px;
 }
 
-input[type="text"],input[type="password"]{
+#loginPassword {
+    font-size: 30px;
+}
+
+#searchText {
+    font-size: 30px;
+}
+
+#colorText {
+    font-size: 30px;
+}
+
+#registerName {
+    font-size: 30px;
+}
+
+#registerPassword {
+    font-size: 30px;
+}
+
+#firstName {
+    font-size: 30px;
+}
+
+#lastName {
+    font-size: 30px;
+}
+
+input[type="text"],
+input[type="password"] {
     border-radius: 25px;
     text-align: center;
     width: 80%;
@@ -81,7 +130,7 @@ input[type="text"],input[type="password"]{
     font-family: 'Ubuntu', sans-serif;
 }
 
-#inner-title{
+#inner-title {
     display: inline-block;
     font-size: 0.8em;
     width: 90%;
@@ -92,7 +141,7 @@ input[type="text"],input[type="password"]{
     color: #95060a;
 }
 
-#loginResult{
+#loginResult {
     display: inline-block;
     font-size: 0.8em;
     width: 90%;
@@ -103,19 +152,19 @@ input[type="text"],input[type="password"]{
     color: #95060a;
 }
 
-#userName{
+#userName {
     display: inline-block;
     width: 80%;
     margin-left: 10%;
     text-align: center;
 }
 
-#logoutButton{
+#logoutButton {
     width: 20%;
     margin-left: 40%;
 }
 
-select{
+select {
     width: 30%;
     margin-left: 35%;
     margin-top: 2%;
@@ -123,11 +172,11 @@ select{
     font-family: 'Ubuntu', sans-serif;
 }
 
-#colorSearchResult{
+#colorSearchResult {
     display: none;
 }
 
-#colorAddResult{
+#colorAddResult {
     display: inline-block;
     font-size: 0.8em;
     width: 90%;
@@ -138,3 +187,120 @@ select{
     font-family: 'Ubuntu', sans-serif;
     color: #95060a;
 }
+
+/* Modal (Popup) Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #b2b2b2;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#addContactFormDiv {
+    font-size: 30px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+}
+
+/* Ensure the contactAddResult is displayed correctly within the modal */
+#contactAddResult {
+    display: inline-block;
+    font-size: 0.8em;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    font-family: 'Ubuntu', sans-serif;
+    color: #95060a;
+}
+
+/* Table Styling */
+#tableContainer {
+    width: 70%;
+    margin-left: 15%;
+    background-color: #b2b2b2;
+    padding: 25px;
+    border-radius: 0 0 10px 10px; /* Optional: round bottom corners */
+    margin-top: -15px; /* Adjust to align with the accessUIDiv */
+}
+
+#contacts {
+    width: 100%;
+    border-collapse: collapse; /* Removes space between borders */
+    margin-top: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 24px; /* Adjust font size as desired */
+    color: #333;
+}
+
+#contacts th,
+#contacts td {
+    border: 1px solid #999;
+    padding: 10px;
+    text-align: left;
+}
+
+#contacts thead {
+    background-color: #a0a0a0; /* Slightly darker shade for the header */
+    color: #FFFFFF;
+}
+
+#contacts th {
+    font-weight: bold;
+}
+
+#contacts tbody tr:nth-child(even) {
+    background-color: #c9c9c9; /* Light grey for even rows */
+}
+
+#contacts tbody tr:hover {
+    background-color: #d9d9d9; /* Highlight on hover */
+}
+
+#contacts .buttons {
+    font-size: 18px;
+    padding: 5px 10px;
+    margin: 2px;
+    width: auto;
+    margin-left: 0;
+}
+
