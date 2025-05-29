@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>COP 4331 LAMP Stack Demo</title>
+    <script type="text/javascript" src="js/code.js"></script>
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+</head>
+
+<body>
+
+    <h1 id="title">COP 4331 LAMP Stack Demo</h1>
+
+    <div id="topRightControls">
+        <span id="userName"></span><br />
+        <button type="button" id="logoutButton" class="buttons" onclick="doLogout();"> Log Out </button>
+    </div>
+
+    <div id="accessUIDiv">
+        <br />
+        <input type="text" id="searchText" placeholder="Contact To Search For" />
+        <button type="button" id="showAddContactFormButton" class="buttons" onclick="showAddContactForm();"> Add Contact </button>
+        <br />
+        <span id="contactSearchResult"></span>
+        <p id="colorList">
+        </p><br /><br />
+    </div>
+
+    <div id="addContactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideAddContactForm();">&times;</span>
+            <div id="addContactFormDiv">
+                <h2>Add New Contact</h2>
+                <input type="text" id="addFirstNameText" placeholder="First Name" /><br />
+                <input type="text" id="addLastNameText" placeholder="Last Name" /><br />
+                <input type="text" id="addEmailText" placeholder="Email" /><br />
+                <input type="text" id="addPhoneText" placeholder="Phone" /><br />
+                <button type="button" id="addContactFormSubmitButton" class="buttons" onclick="addContact();"> Add Contact </button>
+                <button type="button" id="cancelAddContactButton" class="buttons" onclick="hideAddContactForm();"> Cancel </button><br />
+                <span id="contactAddResult"></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="editContactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideEditContactForm();">&times;</span>
+            <div id="editContactFormDiv">
+                <h2>Edit Contact</h2>
+                <input type="hidden" id="editContactId" />
+                <input type="text" id="editFirstNameText" placeholder="First Name" /><br />
+                <input type="text" id="editLastNameText" placeholder="Last Name" /><br />
+                <input type="text" id="editEmailText" placeholder="Email" /><br />
+                <input type="text" id="editPhoneText" placeholder="Phone" /><br />
+                <button type="button" id="updateContactButton" class="buttons" onclick="updateContact();"> Save Changes </button>
+                <button type="button" id="cancelEditContactButton" class="buttons" onclick="hideEditContactForm();"> Cancel </button><br />
+                <span id="contactEditResult"></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="tableContainer">
+        <table id="contacts" cellpadding="0" cellspacing="0" border="0">
+            <thead>
+                <tr>
+                    <th>First&nbspName</th>
+                    <th>Last&nbspName</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

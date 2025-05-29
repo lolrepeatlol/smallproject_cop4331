@@ -1,14 +1,5 @@
 <?php
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: Content-Type");
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    http_response_code(204);
-    exit();
-}
-
 	$inData = getRequestInfo();
 
 	$firstName = $inData["firstName"];
@@ -39,11 +30,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 			$stmt->bind_param("ssss", $firstName, $lastName, $login, $password);
 			$stmt->execute();
 
-            //check if the insertion was successful
+            // Check if the insertion was successful
             if ($stmt->affected_rows > 0) {
-                $newUserId = $conn->insert_id; //get last inserted id
+                $newUserId = $conn->insert_id; // <-- GET THE LAST INSERTED ID HERE
 
-                //pass id to a function that will include it in the json response
+                // Pass the ID to a function that will include it in the JSON response
+                // I've modified returnWithInfo to also accept ID, or you can create a new function.
                 returnWithSuccess($newUserId, $firstName, $lastName, "User registered successfully");
             } else {
                 returnWithError("Registration failed. Could not create user.");
@@ -67,10 +59,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 	function returnWithError( $err )
 	{
+		// When there's an error, typically you'd return ID as 0 or null
 		$retValue = '{"id":0, "firstName":"", "lastName":"", "error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
+	// MODIFIED: New function or enhanced returnWithInfo to include ID
     function returnWithSuccess( $id, $firstName, $lastName, $msg )
     {
         $retValue = '{"id":' . $id . ', "firstName":"' . $firstName . '", "lastName":"' . $lastName . '", "error":"", "message":"' . $msg . '"}';

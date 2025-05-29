@@ -1,0 +1,9 @@
+- Added A register Function
+- Add Contacts implemented
+- Search Contacts implemented
+
+*** To Do ***
+
+- Edit / Delete API to then be able to edit and delete contacts
+- Add Styling
+- Come up with a group "Company name"
