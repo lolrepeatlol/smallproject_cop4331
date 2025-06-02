@@ -556,4 +556,3 @@
 			document.getElementById("contactSearchResult").innerHTML = err.message;
 		}
 	}
-
