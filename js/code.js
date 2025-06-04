@@ -147,7 +147,8 @@
 			{
 				lastName = tokens[1];
 			}
-			else if (tokens[0] == "userId") {
+			else if (tokens[0] == "userId") 
+			{
 				userId = parseInt(tokens[1].trim());
 			}
 		}
@@ -192,17 +193,7 @@
 		document.getElementById("addEmailText").value = "";
 		document.getElementById("addPhoneText").value = "";
 		document.getElementById("contactAddResult").innerHTML = "";
-	}
-	
-	// Close the modal if the user clicks away
-	window.onclick = function (event) 
-	{
-		var modal = document.getElementById("addContactModal");
-		if (event.target == modal) {
-			hideAddContactForm();
-		}
-	}
-	
+	}	
 	function addContact() 
 	{
 		let firstName = document.getElementById("addFirstNameText").value;
@@ -338,6 +329,28 @@
 					} 
 					else 
 					{
+						// Sort the contacts alphabetically
+						jsonObject.results.sort((a, b) => {
+                        // Sort by first name, case-insensitive
+                        let nameA = a.FirstName.toUpperCase();
+                        let nameB = b.FirstName.toUpperCase();
+                        if (nameA < nameB) {
+                            return -1;
+                        }
+                        if (nameA > nameB) {
+                            return 1;
+                        }
+						// Sort by last name if nameA and nameB are the same
+                        let lastNameA = a.LastName.toUpperCase();
+                        let lastNameB = b.LastName.toUpperCase();
+                        if (lastNameA < lastNameB) {
+                            return -1;
+                        }
+                        if (lastNameA > lastNameB) {
+                            return 1;
+                        }
+                        return 0; // names are equal
+                    });
 						// Add elements to the table
 						jsonObject.results.forEach(contact => {
 							let row = tableBody.insertRow();
@@ -407,17 +420,6 @@
 		document.getElementById("contactEditResult").innerHTML = "";
 	}
 	
-	// Hide edit Modal on click
-	window.onclick = function (event) 
-	{
-		var editModal = document.getElementById("editContactModal");
-		
-		if (event.target == editModal) 
-		{
-			hideEditContactForm();
-		}
-	}
-	
 	function updateContact() 
 	{
 		let contactId = document.getElementById("editContactId").value;
@@ -473,6 +475,21 @@
 		catch (err) 
 		{
 			document.getElementById("contactEditResult").innerHTML = err.message;
+		}
+	}
+	// Close the modal if the user clicks away
+	window.onclick = function (event) 
+	{
+		var addContactEvent = document.getElementById("addContactModal");
+		var editContactEvent = document.getElementById("editContactModal");
+		
+		if (event.target == addContactEvent) 
+		{
+			hideAddContactForm();
+		}
+		else if(event.target == editContactEvent)
+		{
+			hideEditContactForm();
 		}
 	}
 	
@@ -556,4 +573,3 @@
 			document.getElementById("contactSearchResult").innerHTML = err.message;
 		}
 	}
-
