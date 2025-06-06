@@ -1,22 +1,33 @@
 body {
-    background-color: #707070;
+    background-color: #0c1a2c;
+	font-family:"Press Start 2P", system-ui;
+	background-image: url('../images/background.png'); 
+}
+input,
+button,
+select,
+textarea {
+    font-family: inherit; 
+    font-size: 1em; 
 }
 
+
 #title {
-    font-size: 40px;
-    width: 100%;
+    font-size: 50px;
     margin: 2% 5%;
     text-align: center;
-    font-family: 'Ubuntu', sans-serif;
-    color: #FFFFFF;
+    color: #e0e0e0;
+    text-shadow: 4px 4px 6px #000000;
 }
 
 #loginDiv {
     font-size: 30px;
     width: 70%;
-    margin-left: 15%;
+    margin: 0 auto;
     padding: 25px;
-    background-color: #b2b2b2;
+    background-color:#0c1a2c;
+	border-radius: 15px;
+	border: 5px solid #2d3b53;
 }
 
 #loggedInDiv {
@@ -34,7 +45,6 @@ body {
     top: 20px;
     right: 20px;
     font-size: 24px;
-    font-family: 'Ubuntu', sans-serif;
     color: #FFFFFF;
     text-align: right;
     padding: 10px;
@@ -45,7 +55,7 @@ body {
 #topRightControls #userName {
     display: block;
     margin-bottom: 5px;
-    width: auto; /* Override previous width */
+    width: auto; 
     margin-left: 0;
     text-align: right;
 }
@@ -75,70 +85,63 @@ body {
 }
 
 .buttons {
-    font-size: 30px;
+    font-size: 25px;
     border-radius: 25px;
     width: 50%;
     margin-left: 25%;
-    font-family: 'Ubuntu', sans-serif;
+	background-color: #DED687;
+	color: #0c1a2c;
+	border: none;
+    cursor: pointer;
+	
 }
 
 .buttons:hover {
-    background-color: #00d5124f;
-    color: #FFFFFF;
+    background-color:#ffd64d;
+    color: #0c1a2c;
     opacity: 50%;
 }
 
-#loginName {
-    font-size: 30px;
-}
-
+#loginName,
 #loginPassword {
-    font-size: 30px;
+    font-size: 25px;
+    font-family: "Press Start 2P", system-ui;
+	color:#0c1a2c;
 }
 
-#searchText {
-    font-size: 30px;
-}
-
-#colorText {
-    font-size: 30px;
-}
-
-#registerName {
-    font-size: 30px;
-}
-
-#registerPassword {
-    font-size: 30px;
-}
-
-#firstName {
-    font-size: 30px;
-}
-
+#searchText,
+#colorText,
+#registerName,
+#registerPassword,
+#firstName,
 #lastName {
     font-size: 30px;
 }
-
+/* This will chang the color of the text displayed in the login box*/
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  color: #0c1a2c;
+}
 input[type="text"],
-input[type="password"] {
+input[type="password"]{
+    height: 50px;
+    box-sizing: border-box;
     border-radius: 25px;
     text-align: center;
     width: 80%;
     margin-left: 10%;
     margin-bottom: 2%;
-    font-family: 'Ubuntu', sans-serif;
+    background-color: #e0e0e0;
+    border: 5px solid #7a8aa2;
 }
 
 #inner-title {
-    display: inline-block;
+    display: block;
     font-size: 0.8em;
-    width: 90%;
     text-align: center;
-    margin-left: 5%;
-    margin-bottom: 2%;
-    font-family: 'Ubuntu', sans-serif;
-    color: #95060a;
+	margin-bottom: 2%;
+    font-family: "Press Start 2P", system-ui;
+    color:#17A7C6;
 }
 
 #loginResult {
