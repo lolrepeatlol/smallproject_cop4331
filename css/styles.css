@@ -2,6 +2,10 @@ body {
     background-color: #0c1a2c;
     font-family:"Press Start 2P", system-ui;
     background-image: url('../images/background.gif'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
 }
 input,
 button,
@@ -13,11 +17,11 @@ textarea {
 
 
 #title {
-    font-size: 50px;
+    font-size: 70px;
     margin: 2% 5%;
     text-align: center;
     color: #e0e0e0;
-    text-shadow: 4px 4px 6px #000000;
+    text-shadow: 8px 8px 12px #000000;
 }
 
 #loginDiv {
@@ -28,6 +32,8 @@ textarea {
     background-color:#0c1a2c;
 	border-radius: 15px;
 	border: 5px solid #2d3b53;
+    position: relative;
+    opacity: 0.96;
 }
 
 #loggedInDiv {
@@ -36,36 +42,31 @@ textarea {
     margin-left: 15%;
     padding: 25px;
     background-color: #b2b2b2;
-    /* This will be replaced by #topRightControls positioning */
     display: none; 
 }
 
 #topRightControls {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 24px;
-    color: #FFFFFF;
-    text-align: right;
-    padding: 10px;
-    background-color: #b2b2b2;
-    border-radius: 10px;
+    top: 2%;
+    right: 2%;
+    color: #e0e0e0;
+    padding: 0.75em;
+    background-color: transparent; 
+    border-radius: 0.5em;
+
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    gap: 10px;  
 }
 
 #topRightControls #userName {
-    display: block;
-    margin-bottom: 5px;
-    width: auto; 
-    margin-left: 0;
-    text-align: right;
+    font-size: 16px;
 }
 
 #topRightControls #logoutButton {
-    width: auto;
-    margin-left: 0;
     padding: 5px 15px;
     font-size: 20px;
-    display: inline-block; /* Adjust for better button display */
 }
 
 #accessUIDiv {
@@ -73,7 +74,7 @@ textarea {
     width: 70%;
     margin-left: 15%;
     padding: 25px;
-    background-color: #b2b2b2;
+    background-color: #0c1a2c;
 }
 
 #registerDiv {
@@ -84,18 +85,51 @@ textarea {
     background-color:#0c1a2c;
 	border-radius: 15px;
 	border: 5px solid #2d3b53;
+    position: relative;
+    opacity: 0.96;
 }
-
 .buttons {
+    /* Base Styling */
+    background-color: #ded687; 
+    color: #0c1a2c; 
+    font-family: "Press Start 2P", system-ui; 
     font-size: 25px;
-    border-radius: 25px;
+    text-transform: uppercase;
+    cursor: pointer;
+    
+    /* Flex Container to properly center text */
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    
+    /* Center the text, remove extra spacing */
+    padding: 5px 15px;
+    margin: 10px;
     width: 50%;
     margin-left: 25%;
-	background-color: #DED687;
-	color: #0c1a2c;
-	border: none;
-    cursor: pointer;
+
+
+    /*Set the border style and width to create space for the image*/
+    border-style: solid;
+    border-width: 30px;
+
+    /* Define the image source, slice, and repeat behavior */
+    border-image-source: url('../images/pixel-border.png');
+    border-image-slice: 15 fill;
+    border-image-repeat: stretch;
+    background-clip:padding-box;
+    image-rendering: pixelated;
+    position: relative;
 }
+.buttons:hover {
+    background-color:#ffd64d;
+    color: #0c1a2c;
+    opacity: 50%;
+}
+.buttons:active{
+  top: 5px;
+}
+
 
 #registerButton {
     height: 60px
@@ -107,30 +141,40 @@ textarea {
     height: 35px
 }
 
-.buttons:hover {
-    background-color:#ffd64d;
-    color: #0c1a2c;
-    opacity: 50%;
-}
-
 #loginName,
-#loginPassword {
-    font-size: 25px;
-    font-family: "Press Start 2P", system-ui;
-	color:#0c1a2c;
-}
-
-#searchText,
-#colorText,
+#loginPassword,
 #registerName,
 #registerPassword,
 #firstName,
 #lastName {
+   
+    /* Font and Text Styling */
+    font-family: "Press Start 2P", system-ui;
+    color: #0c1a2c;
+    text-align: center;
+    
+    /* Sizing and Box Model */
+    box-sizing: border-box;
+    height: 70px;
+    padding: 0 20px; 
+    background-clip: padding-box; 
+
+    /* Pixelated Border*/
+    border-style: solid;
+    border-width: 20px; 
+    border-image-source: url('../images/pixel-border-input.png');
+    border-image-slice: 15 fill;
+    border-image-repeat: stretch;
+    image-rendering: pixelated;
+}
+
+#searchText,
+#colorText{
     font-size: 25px;
 }
 
 
-/* This will chang the color of the text displayed in the login box*/
+/* This will change the color of the text displayed in the login box*/
 input[type="text"]::placeholder,
 input[type="password"]::placeholder {
   color: #0c1a2c;
@@ -158,14 +202,33 @@ input[type="password"]{
 }
 
 #loginResult {
-    display: inline-block;
+    display: block;
     font-size: 0.8em;
-    width: 90%;
     text-align: center;
-    margin-left: 5%;
-    margin-bottom: 2%;
-    font-family: 'Ubuntu', sans-serif;
-    color: #95060a;
+	margin-bottom: 2%;
+    font-family: "Press Start 2P", system-ui;
+    color:#17A7C6;
+    margin-top: 20px;
+    position:absolute;
+    bottom: 80px;
+    left:0;
+    right:0;
+
+}
+
+#loginResult,
+#registerResult{
+    display: block;
+    font-size: 0.8em;
+    text-align: center;
+	margin-bottom: 2%;
+    font-family: "Press Start 2P", system-ui;
+    color:#17A7C6;
+    margin-top: 40px;
+    position:absolute;
+    bottom: 100px;
+    left:0;
+    right:0;
 }
 
 #userName {
@@ -192,7 +255,9 @@ select {
     display: none;
 }
 
-#colorAddResult {
+#colorAddResult,
+#contactSearchResult,
+#contactEditResult{
     display: inline-block;
     font-size: 0.8em;
     width: 90%;
@@ -200,8 +265,7 @@ select {
     margin-left: 5%;
     margin-top: 2%;
     margin-bottom: 1%;
-    font-family: 'Ubuntu', sans-serif;
-    color: #95060a;
+    color: #17A7C6;
 }
 
 /* Modal (Popup) Styles */
@@ -221,13 +285,21 @@ select {
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #b2b2b2;
+    background-color: #0c1a2c;
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
     max-width: 500px;
     position: relative;
+}
+.modalTitle{
+    font-size: 50px;
+    margin: 1% 5%;
+    text-align: center;
+    color: #e0e0e0;
+    text-shadow: 3px 3px 6px #000000;
+    margin-bottom: 40px;
 }
 
 /* The Close Button */
@@ -265,38 +337,49 @@ select {
     margin-left: 5%;
     margin-top: 2%;
     margin-bottom: 1%;
-    font-family: 'Ubuntu', sans-serif;
-    color: #95060a;
+    color: #17A7C6;
 }
 
 /* Table Styling */
 #tableContainer {
     width: 70%;
-    margin-left: 15%;
-    background-color: #b2b2b2;
+    margin: 2% auto 0 auto; 
+    background-color: #0c1a2c;
     padding: 25px;
-    border-radius: 0 0 10px 10px; /* Optional: round bottom corners */
-    margin-top: -15px; /* Adjust to align with the accessUIDiv */
+    border-radius: 15px; 
+    border: 5px solid #2d3b53;
+    opacity: 0.96;
+    overflow-x: auto; 
+    box-sizing: border-box;
 }
 
 #contacts {
     width: 100%;
-    border-collapse: collapse; /* Removes space between borders */
+    border-collapse: separate;
+    border-spacing: 2px; 
     margin-top: 20px;
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 24px; /* Adjust font size as desired */
-    color: #333;
+    font-family: "Press Start 2P", system-ui;
+    font-size: 14px; 
+    color: #e0e0e0;
+    text-shadow: 2px 2px 4px #000000;
 }
 
-#contacts th,
+#contacts th{
+    background-color: #2d3b53;
+    color: #ded687; 
+    padding: 15px 10px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+}
 #contacts td {
-    border: 1px solid #999;
-    padding: 10px;
-    text-align: left;
+    padding: 12px 10px;
+    text-align: center;
+    background-color: #1a293f;
 }
 
 #contacts thead {
-    background-color: #a0a0a0; /* Slightly darker shade for the header */
+    background-color: #a0a0a0;
     color: #FFFFFF;
 }
 
@@ -304,18 +387,17 @@ select {
     font-weight: bold;
 }
 
-#contacts tbody tr:nth-child(even) {
-    background-color: #c9c9c9; /* Light grey for even rows */
-}
-
-#contacts tbody tr:hover {
-    background-color: #d9d9d9; /* Highlight on hover */
+#contacts tbody tr:hover td {
+    background-color: #2d3b53;
 }
 
 #contacts .buttons {
-    font-size: 18px;
-    padding: 5px 10px;
-    margin: 2px;
-    width: auto;
-    margin-left: 0;
+    font-size: 12px;
+    padding: 10px;
+    border-width: 20px;
+    margin: 5px auto;
+    width: 90%;
+    min-height: 30px;
+    height: auto;
+    margin-left: auto; 
 }
