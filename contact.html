@@ -2,15 +2,18 @@
 <html>
 
 <head>
-    <title>COP 4331 LAMP Stack Demo</title>
-    <script type="text/javascript" src="js/code.js"></script>
-    <link href="css/styles.css" rel="stylesheet">
+    <title>CitySync</title>
+	<script type="text/javascript" src="js/code.js"></script>
+    <link href="css/styles.css" rel="stylesheet">	
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <h1 id="title">COP 4331 LAMP Stack Demo</h1>
+    <h1 id="title">CitySync</h1>
 
     <div id="topRightControls">
         <span id="userName"></span><br />
@@ -31,13 +34,12 @@
         <div class="modal-content">
             <span class="close" onclick="hideAddContactForm();">&times;</span>
             <div id="addContactFormDiv">
-                <h2>Add New Contact</h2>
+                <h2 class ="modalTitle">Add New Contact</h2>
                 <input type="text" id="addFirstNameText" placeholder="First Name" /><br />
                 <input type="text" id="addLastNameText" placeholder="Last Name" /><br />
                 <input type="text" id="addEmailText" placeholder="Email" /><br />
                 <input type="text" id="addPhoneText" placeholder="Phone" /><br />
                 <button type="button" id="addContactFormSubmitButton" class="buttons" onclick="addContact();"> Add Contact </button>
-                <button type="button" id="cancelAddContactButton" class="buttons" onclick="hideAddContactForm();"> Cancel </button><br />
                 <span id="contactAddResult"></span>
             </div>
         </div>
@@ -47,14 +49,13 @@
         <div class="modal-content">
             <span class="close" onclick="hideEditContactForm();">&times;</span>
             <div id="editContactFormDiv">
-                <h2>Edit Contact</h2>
+                <h2 class ="modalTitle">Edit Contact</h2>
                 <input type="hidden" id="editContactId" />
                 <input type="text" id="editFirstNameText" placeholder="First Name" /><br />
                 <input type="text" id="editLastNameText" placeholder="Last Name" /><br />
                 <input type="text" id="editEmailText" placeholder="Email" /><br />
                 <input type="text" id="editPhoneText" placeholder="Phone" /><br />
                 <button type="button" id="updateContactButton" class="buttons" onclick="updateContact();"> Save Changes </button>
-                <button type="button" id="cancelEditContactButton" class="buttons" onclick="hideEditContactForm();"> Cancel </button><br />
                 <span id="contactEditResult"></span>
             </div>
         </div>
@@ -68,7 +69,7 @@
                     <th>Last&nbspName</th>
                     <th>Email</th>
                     <th>Phone</th>
-                    <th></th>
+                    <th>Options</th>
                 </tr>
             </thead>
             <tbody>
