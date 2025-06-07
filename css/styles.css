@@ -18,7 +18,7 @@ textarea {
 
 #title {
     font-size: 70px;
-    margin: 2% 5%;
+    margin: 3% 5%;
     text-align: center;
     color: #e0e0e0;
     text-shadow: 8px 8px 12px #000000;
@@ -26,7 +26,7 @@ textarea {
 
 #loginDiv {
     font-size: 30px;
-    width: 70%;
+    width: 55%;
     margin: 0 auto;
     padding: 25px;
     background-color:#0c1a2c;
