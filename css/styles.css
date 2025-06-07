@@ -1,7 +1,8 @@
 body {
     background-color: #0c1a2c;
 	font-family:"Press Start 2P", system-ui;
-	background-image: url('../images/background.png'); 
+	/*background-image: url('../images/background.png'); */
+    background-image:url(https://wallpaperaccess.com/full/2825710.gif)
 }
 input,
 button,
