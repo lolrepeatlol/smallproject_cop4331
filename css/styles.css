@@ -96,7 +96,16 @@ textarea {
 	color: #0c1a2c;
 	border: none;
     cursor: pointer;
-	
+}
+
+#registerButton {
+    height: 60px
+}
+
+#registerBackToLogin,
+#loginButton,
+#goToRegisterButton {
+    height: 35px
 }
 
 .buttons:hover {
