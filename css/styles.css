@@ -1,7 +1,7 @@
 body {
     background-color: #0c1a2c;
-	font-family:"Press Start 2P", system-ui;
-	background-image: url('../images/background.png'); 
+    font-family:"Press Start 2P", system-ui;
+    background-image: url('../images/background.gif'); 
 }
 input,
 button,
@@ -77,11 +77,13 @@ textarea {
 }
 
 #registerDiv {
-    font-size: 30px;
+   font-size: 30px;
     width: 70%;
-    margin-left: 15%;
+    margin: 0 auto;
     padding: 25px;
-    background-color: #b2b2b2;
+    background-color:#0c1a2c;
+	border-radius: 15px;
+	border: 5px solid #2d3b53;
 }
 
 .buttons {
@@ -93,7 +95,16 @@ textarea {
 	color: #0c1a2c;
 	border: none;
     cursor: pointer;
-	
+}
+
+#registerButton {
+    height: 60px
+}
+
+#registerBackToLogin,
+#loginButton,
+#goToRegisterButton {
+    height: 35px
 }
 
 .buttons:hover {
@@ -115,8 +126,10 @@ textarea {
 #registerPassword,
 #firstName,
 #lastName {
-    font-size: 30px;
+    font-size: 25px;
 }
+
+
 /* This will chang the color of the text displayed in the login box*/
 input[type="text"]::placeholder,
 input[type="password"]::placeholder {
