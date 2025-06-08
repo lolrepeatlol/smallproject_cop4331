@@ -190,26 +190,40 @@ textarea {
     image-rendering: pixelated;
 }
 
-#searchText,
-#colorText{
-       /* Font and Text Styling */
+#searchText {
+    margin: 0 !important;
+}
+
+.search-box-wrapper {
+    position: relative;
+    width: 55%;
+    margin: 0 auto 30px;
+}
+
+#searchText {
     font-family: "Press Start 2P", system-ui;
     color: #0c1a2c;
     text-align: center;
-    font-size:22px;
-    
-    /* Sizing and Box Model */
+    font-size: 22px;
     box-sizing: border-box;
     height: 70px;
-    padding: 0 20px; 
-    background-clip: padding-box; 
+    padding: 0 20px;
+    background-clip: padding-box;
+    border: 20px solid transparent;
+    border-image: url('../images/pixel-border-input.png') 15 fill stretch;
+    image-rendering: pixelated;
+    width: 100%;
+}
 
-    /* Pixelated Border*/
-    border-style: solid;
-    border-width: 20px; 
-    border-image-source: url('../images/pixel-border-input.png');
-    border-image-slice: 15 fill;
-    border-image-repeat: stretch;
+/* Overlay the magnifier inside the left border */
+.search-icon {
+    position: absolute;
+    left: 26px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
     image-rendering: pixelated;
 }
 
