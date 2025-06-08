@@ -2,6 +2,7 @@
 
 $allowed_origins = [
     "http://ucfgroup9.xyz",
+    "http://www.ucfgroup9.xyz",
     "https://app.swaggerhub.com"
 ];
 
