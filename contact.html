@@ -13,21 +13,18 @@
 
 <body>
 
-    <h1 id="title">CitySync</h1>
-
-    <div id="topRightControls">
-        <span id="userName"></span><br />
-        <button type="button" id="logoutButton" class="buttons" onclick="doLogout();"> Log Out </button>
-    </div>
-
+        <h1 id="title">CitySync</h1>
+        <div id="topRightControls">
+            <span id="userName"></span><br />
+            <button type="button" id="logoutButton" class="buttons" onclick="doLogout();"> Log Out </button>
+        </div>
     <div id="accessUIDiv">
         <br />
         <input type="text" id="searchText" placeholder="Contact To Search For" />
         <button type="button" id="showAddContactFormButton" class="buttons" onclick="showAddContactForm();"> Add Contact </button>
         <br />
         <span id="contactSearchResult"></span>
-        <p id="colorList">
-        </p><br /><br />
+        <p id="colorList"></p>
     </div>
 
     <div id="addContactModal" class="modal">
@@ -63,15 +60,15 @@
 
     <div id="tableContainer">
         <table id="contacts" cellpadding="0" cellspacing="0" border="0">
-            <thead>
-                <tr>
-                    <th>First&nbspName</th>
-                    <th>Last&nbspName</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Options</th>
-                </tr>
-            </thead>
+              <thead>
+                <tr>
+                    <th class="nameCol">First Name</th>
+                    <th class="nameCol">Last Name</th>
+                    <th class="emailCol">Email</th>
+                    <th class="phoneCol">Phone</th>
+                    <th class="OptionsCol">Options</th>
+                </tr>
+            </thead>
             <tbody>
             </tbody>
         </table>
