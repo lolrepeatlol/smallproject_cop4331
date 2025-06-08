@@ -46,35 +46,56 @@ textarea {
 }
 
 #topRightControls {
-    position: absolute;
-    top: 2%;
-    right: 2%;
     color: #e0e0e0;
-    padding: 0.75em;
-    background-color: transparent; 
+    padding: 1.5em;
+    background-color:#0c1a2c; 
+    border: 5px solid #2d3b53;
     border-radius: 0.5em;
-
     display: flex;
     flex-direction: column; 
     align-items: center;
-    gap: 10px;  
+    justify-content: center;
+    gap: 10px;
+    max-width:250px;
+    min-width:150px;
+    min-height:150px;
+    position: absolute;
+    right:2%;
+    top:5%;
+
 }
 
 #topRightControls #userName {
-    font-size: 16px;
+    font-size: 25px;
+    text-align: center;
+    line-height: 1.8;
+    color: #e0e0e0;
+    text-shadow: 8px 8px 12px #2389a2;
+    white-space:normal;
+    margin:0;
+    width:100%;
+    word-break: break-all;
 }
 
 #topRightControls #logoutButton {
-    padding: 5px 15px;
-    font-size: 20px;
+    font-size: 15px;
+    width:80%;
+    margin:0;
+    white-space:nowrap;
 }
 
 #accessUIDiv {
-    font-size: 30px;
-    width: 70%;
-    margin-left: 15%;
-    padding: 25px;
+    width: 60%;
+    margin: 0 auto; 
     background-color: #0c1a2c;
+    padding:25px;
+    padding-bottom: 0px;
+    border-radius: 15px 15px 0 0; /*top left and top right will only be fillet*/
+    border: 5px solid #2d3b53;
+    border-bottom:none;
+    opacity: 0.96;
+    overflow-x: auto; 
+    box-sizing: border-box;
 }
 
 #registerDiv {
@@ -132,7 +153,8 @@ textarea {
 
 
 #registerButton {
-    height: 60px
+    height: 60px;
+    margin-bottom:35px;
 }
 
 #registerBackToLogin,
@@ -170,7 +192,25 @@ textarea {
 
 #searchText,
 #colorText{
-    font-size: 25px;
+       /* Font and Text Styling */
+    font-family: "Press Start 2P", system-ui;
+    color: #0c1a2c;
+    text-align: center;
+    font-size:22px;
+    
+    /* Sizing and Box Model */
+    box-sizing: border-box;
+    height: 70px;
+    padding: 0 20px; 
+    background-clip: padding-box; 
+
+    /* Pixelated Border*/
+    border-style: solid;
+    border-width: 20px; 
+    border-image-source: url('../images/pixel-border-input.png');
+    border-image-slice: 15 fill;
+    border-image-repeat: stretch;
+    image-rendering: pixelated;
 }
 
 
@@ -278,8 +318,6 @@ select {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
     padding-top: 60px;
 }
 
@@ -292,6 +330,9 @@ select {
     width: 80%;
     max-width: 500px;
     position: relative;
+    border-radius: 15px;
+    border: 5px solid #2d3b53;
+    
 }
 .modalTitle{
     font-size: 50px;
@@ -306,7 +347,7 @@ select {
 .close {
     color: #aaa;
     float: right;
-    font-size: 28px;
+    font-size: 45px;
     font-weight: bold;
     position: absolute;
     right: 10px;
@@ -340,16 +381,49 @@ select {
     color: #17A7C6;
 }
 
+/* Formating for the input txt fields */
+#addFirstNameText,
+#addLastNameText,
+#addEmailText,
+#addPhoneText,
+#editFirstNameText,
+#editLastNameText,
+#editEmailText,
+#editPhoneText{
+        /* Font and Text Styling */
+    font-family: "Press Start 2P", system-ui;
+    color: #0c1a2c;
+    text-align: center;
+    
+    /* Sizing and Box Model */
+    box-sizing: border-box;
+    height: 70px;
+    padding: 0 20px; 
+    margin-bottom: 20px;
+    background-clip: padding-box; 
+
+    /* Pixelated Border*/
+    border-style: solid;
+    border-width: 20px; 
+    border-image-source: url('../images/pixel-border-input.png');
+    border-image-slice: 15 fill;
+    border-image-repeat: stretch;
+    image-rendering: pixelated;
+}
+
 /* Table Styling */
 #tableContainer {
-    width: 70%;
-    margin: 2% auto 0 auto; 
+    width: 60%;
+    margin: auto; 
+    margin-top: -40px;
     background-color: #0c1a2c;
     padding: 25px;
-    border-radius: 15px; 
+    padding-top:0px;
+    border-radius: 0 0 15px 15px; /* only bottom left and right will be fillet */
     border: 5px solid #2d3b53;
+    border-top: none; 
     opacity: 0.96;
-    overflow-x: auto; 
+    overflow: hidden; 
     box-sizing: border-box;
 }
 
@@ -363,6 +437,18 @@ select {
     color: #e0e0e0;
     text-shadow: 2px 2px 4px #000000;
 }
+#contacts .nameCol{
+    width: 18%;
+}
+#contacts .emailCol{
+    width: 30%;
+}   
+#contacts .phoneCol{
+    width: 18%;
+}
+#contacts .optionsCol{
+    width: 18%;
+}
 
 #contacts th{
     background-color: #2d3b53;
@@ -370,21 +456,24 @@ select {
     padding: 15px 10px;
     text-align: center;
     text-transform: uppercase;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: bold;
+
 }
+
 #contacts td {
-    padding: 12px 10px;
-    text-align: center;
     background-color: #1a293f;
+    text-align:center;
+    font-size: 16px;
+    padding:12px 5px;
+    word-break:break-all;
+    white-space:nowrap;
 }
+
 
 #contacts thead {
     background-color: #a0a0a0;
     color: #FFFFFF;
-}
-
-#contacts th {
-    font-weight: bold;
 }
 
 #contacts tbody tr:hover td {
@@ -393,11 +482,16 @@ select {
 
 #contacts .buttons {
     font-size: 12px;
-    padding: 10px;
-    border-width: 20px;
-    margin: 5px auto;
-    width: 90%;
+    padding: 4px 5px;
+    border-width: 12px;
+    margin-top:0px;
+    margin-bottom:auto ;
+    width: 80%;
     min-height: 30px;
     height: auto;
     margin-left: auto; 
+}
+/* Adjust the space in between the buttons */
+#contacts .buttons + .buttons {
+    margin-top: 20px; 
 }
