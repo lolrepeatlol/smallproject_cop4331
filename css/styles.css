@@ -74,7 +74,7 @@ textarea {
     white-space:normal;
     margin:0;
     width:100%;
-    word-break: break-all;
+    word-break: break-word;
 }
 
 #topRightControls #logoutButton {
