@@ -1,0 +1,572 @@
+body {
+    background-color: #0c1a2c;
+    font-family:"Press Start 2P", system-ui;
+    background-image: url('../images/background.gif'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+input,
+button,
+select,
+textarea {
+    font-family: inherit; 
+    font-size: 1em; 
+}
+
+
+#title {
+    font-size: 70px;
+    margin: 3% 5%;
+    text-align: center;
+    color: #e0e0e0;
+    text-shadow: 8px 8px 12px #000000;
+}
+
+#loginDiv {
+    font-size: 30px;
+    width: 55%;
+    margin: 0 auto;
+    padding: 25px;
+    background-color:#0c1a2c;
+	border-radius: 15px;
+	border: 5px solid #2d3b53;
+    position: relative;
+    opacity: 0.95;
+}
+
+#loggedInDiv {
+    font-size: 30px;
+    width: 70%;
+    margin-left: 15%;
+    padding: 25px;
+    background-color: #b2b2b2;
+    display: none; 
+}
+
+#topRightControls {
+    color: #e0e0e0;
+    padding: 1.5em;
+    background-color:#0c1a2c; 
+    border: 5px solid #2d3b53;
+    border-radius: 0.5em;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    max-width:250px;
+    min-width:150px;
+    min-height:150px;
+    position: absolute;
+    right:2%;
+    top:5%;
+
+}
+
+#topRightControls #userName {
+    font-size: 25px;
+    text-align: center;
+    line-height: 1.8;
+    color: #e0e0e0;
+    text-shadow: 8px 8px 12px #2389a2;
+    white-space:normal;
+    margin:0;
+    width:100%;
+    word-break: break-word;
+}
+
+#topRightControls #logoutButton {
+    font-size: 15px;
+    width:80%;
+    margin:0;
+    white-space:nowrap;
+}
+
+#accessUIDiv {
+    width: 60%;
+    margin: 0 auto; 
+    background-color: #0c1a2c;
+    padding:25px;
+    padding-bottom: 0px;
+    border-radius: 15px 15px 0 0; /*top left and top right will only be fillet*/
+    border: 5px solid #2d3b53;
+    border-bottom:none;
+    opacity: 0.96;
+    overflow-x: auto; 
+    box-sizing: border-box;
+}
+
+#registerDiv {
+   font-size: 30px;
+    width: 55%;
+    margin: 0 auto;
+    padding: 25px;
+    background-color:#0c1a2c;
+	border-radius: 15px;
+	border: 5px solid #2d3b53;
+    position: relative;
+    opacity: 0.95;
+}
+.buttons {
+    /* Base Styling */
+    background-color: #ded687; 
+    color: #0c1a2c; 
+    font-family: "Press Start 2P", system-ui; 
+    font-size: 25px;
+    text-transform: uppercase;
+    cursor: pointer;
+    
+    /* Flex Container to properly center text */
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    
+    /* Center the text, remove extra spacing */
+    padding: 5px 15px;
+    margin: 10px;
+    width: 50%;
+    margin-left: 25%;
+
+
+    /*Set the border style and width to create space for the image*/
+    border-style: solid;
+    border-width: 30px;
+
+    /* Define the image source, slice, and repeat behavior */
+    border-image-source: url('../images/pixel-border.png');
+    border-image-slice: 15 fill;
+    border-image-repeat: stretch;
+    background-clip:padding-box;
+    image-rendering: pixelated;
+    position: relative;
+}
+.buttons:hover {
+    background-color:#ffd64d;
+    color: #0c1a2c;
+    opacity: 50%;
+}
+.buttons:active{
+  top: 5px;
+}
+
+
+#registerButton {
+    height: 60px;
+    margin-bottom:35px;
+}
+
+#registerBackToLogin,
+#loginButton,
+#goToRegisterButton {
+    height: 35px
+}
+
+#loginName,
+#loginPassword,
+#registerName,
+#registerPassword,
+#firstName,
+#lastName {
+   
+    /* Font and Text Styling */
+    font-family: "Press Start 2P", system-ui;
+    color: #0c1a2c;
+    text-align: center;
+    
+    /* Sizing and Box Model */
+    box-sizing: border-box;
+    height: 70px;
+    padding: 0 20px; 
+    background-clip: padding-box; 
+
+    /* Pixelated Border*/
+    border-style: solid;
+    border-width: 20px; 
+    border-image-source: url('../images/pixel-border-input.png');
+    border-image-slice: 15 fill;
+    border-image-repeat: stretch;
+    image-rendering: pixelated;
+}
+
+#searchText {
+    margin: 0 !important;
+}
+
+.search-box-wrapper {
+    position: relative;
+    width: 55%;
+    margin: 0 auto 30px;
+}
+
+#searchText {
+    font-family: "Press Start 2P", system-ui;
+    color: #0c1a2c;
+    text-align: center;
+    font-size: 22px;
+    box-sizing: border-box;
+    height: 70px;
+    padding: 0 20px;
+    background-clip: padding-box;
+    border: 20px solid transparent;
+    border-image: url('../images/pixel-border-input.png') 15 fill stretch;
+    image-rendering: pixelated;
+    width: 100%;
+}
+
+/* Overlay the magnifier inside the left border */
+.search-icon {
+    position: absolute;
+    left: 26px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
+    image-rendering: pixelated;
+}
+
+
+/* This will change the color of the text displayed in the login box*/
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  color: #0c1a2c;
+}
+input[type="text"],
+input[type="password"]{
+    height: 50px;
+    box-sizing: border-box;
+    border-radius: 25px;
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 2%;
+    background-color: #e0e0e0;
+    border: 5px solid #7a8aa2;
+}
+
+#inner-title {
+    display: block;
+    font-size: 0.8em;
+    text-align: center;
+	margin-bottom: 2%;
+    font-family: "Press Start 2P", system-ui;
+    color:#17A7C6;
+}
+
+#loginResult {
+    display: block;
+    font-size: 0.8em;
+    text-align: center;
+	margin-bottom: 2%;
+    font-family: "Press Start 2P", system-ui;
+    color:#17A7C6;
+    margin-top: 20px;
+    position:absolute;
+    bottom: 80px;
+    left:0;
+    right:0;
+
+}
+
+#loginResult,
+#registerResult{
+    display: block;
+    font-size: 0.8em;
+    text-align: center;
+	margin-bottom: 2%;
+    font-family: "Press Start 2P", system-ui;
+    color:#17A7C6;
+    margin-top: 40px;
+    position:absolute;
+    bottom: 100px;
+    left:0;
+    right:0;
+}
+
+#userName {
+    display: inline-block;
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+}
+
+#logoutButton {
+    width: 20%;
+    margin-left: 40%;
+}
+
+select {
+    width: 30%;
+    margin-left: 35%;
+    margin-top: 2%;
+    font-size: 0.75em;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#colorSearchResult {
+    display: none;
+}
+
+#colorAddResult,
+#contactSearchResult,
+#contactEditResult{
+    display: inline-block;
+    font-size: 0.8em;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    color: #17A7C6;
+}
+
+/* Modal (Popup) Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #0c1a2c;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+    border-radius: 15px;
+    border: 5px solid #2d3b53;
+    
+}
+.modalTitle{
+    font-size: 50px;
+    margin: 1% 5%;
+    text-align: center;
+    color: #e0e0e0;
+    text-shadow: 3px 3px 6px #000000;
+    margin-bottom: 40px;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 45px;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#addContactFormDiv {
+    font-size: 30px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+}
+
+/* Ensure the contactAddResult is displayed correctly within the modal */
+#contactAddResult {
+    display: inline-block;
+    font-size: 0.8em;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    color: #17A7C6;
+}
+
+/* Formating for the input txt fields */
+#addFirstNameText,
+#addLastNameText,
+#addEmailText,
+#addPhoneText,
+#editFirstNameText,
+#editLastNameText,
+#editEmailText,
+#editPhoneText{
+        /* Font and Text Styling */
+    font-family: "Press Start 2P", system-ui;
+    color: #0c1a2c;
+    text-align: center;
+    
+    /* Sizing and Box Model */
+    box-sizing: border-box;
+    height: 70px;
+    padding: 0 20px; 
+    margin-bottom: 20px;
+    background-clip: padding-box; 
+
+    /* Pixelated Border*/
+    border-style: solid;
+    border-width: 20px; 
+    border-image-source: url('../images/pixel-border-input.png');
+    border-image-slice: 15 fill;
+    border-image-repeat: stretch;
+    image-rendering: pixelated;
+}
+
+/* Table Styling */
+#tableContainer {
+    width: 60%;
+    margin: auto; 
+    margin-top: -40px;
+    background-color: #0c1a2c;
+    padding: 25px;
+    padding-top:0px;
+    border-radius: 0 0 15px 15px; /* only bottom left and right will be fillet */
+    border: 5px solid #2d3b53;
+    border-top: none; 
+    opacity: 0.96;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+#contacts {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 2px; 
+    margin-top: 20px;
+    font-family: "Press Start 2P", system-ui;
+    font-size: 14px; 
+    color: #e0e0e0;
+    text-shadow: 2px 2px 4px #000000;
+}
+#contacts .nameCol{
+    width: 18%;
+}
+#contacts .emailCol{
+    width: 30%;
+}   
+#contacts .phoneCol{
+    width: 18%;
+}
+#contacts .optionsCol{
+    width: 18%;
+}
+
+#contacts th{
+    background-color: #2d3b53;
+    color: #ded687; 
+    padding: 15px 10px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+#contacts td {
+    background-color: #1a293f;
+    text-align:center;
+    font-size: 16px;
+    padding:12px 5px;
+    word-break:break-all;
+    white-space:nowrap;
+}
+
+
+#contacts thead {
+    background-color: #a0a0a0;
+    color: #FFFFFF;
+}
+
+#contacts tbody tr:hover td {
+    background-color: #2d3b53;
+}
+
+#contacts .buttons {
+    font-size: 12px;
+    padding: 4px 5px;
+    border-width: 12px;
+    margin-top:0px;
+    margin-bottom:auto ;
+    width: 80%;
+    min-height: 30px;
+    height: auto;
+    margin-left: auto; 
+}
+/* Adjust the space in between the buttons */
+#contacts .buttons + .buttons {
+    margin-top: 20px; 
+}
+@media (max-width: 1700px) {
+    /*Changes to the Login Page*/
+    #loginResult {
+    display: block;
+    font-size: 0.8em;
+    text-align: center;
+	margin-bottom: 20px;
+    font-family: "Press Start 2P", system-ui;
+    color:#17A7C6;
+    margin-top: 10px;
+    position:absolute;
+    bottom: 100px;
+    left:0;
+    right:0;
+
+}
+#goToRegisterButton {
+    height: 35px;
+    margin-top:35px;
+}
+
+    /* Increase the width of the main containers to give the table more room */
+    #accessUIDiv,
+    #tableContainer {
+        width: 90%;
+        margin-left:auto;
+        margin-right:auto;
+        box-sizing:border-box;
+    }
+
+    /* Reduce the font size in the table header and body */
+    #contacts th {
+        font-size: 14px;
+        padding: 12px 8px;
+    }
+
+    #contacts td {
+        font-size: 12px;
+        padding: 10px 4px;
+    }
+
+    /* Reduce the size of the buttons inside the table */
+    #contacts .buttons {
+        font-size: 10px;
+        border-width: 10px;
+        min-height: 25px;
+    }
+
+    /* Center Log Out Button */
+    #topRightControls{
+        position: relative;
+        top:auto;
+        left:68%;
+        width:90%;
+        margin:20px;
+    }
+    #title {
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
+}
